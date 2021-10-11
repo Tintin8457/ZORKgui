@@ -348,9 +348,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
-# Ignored Files
-.vs/
-GUIDesign/bin/
-GUIDesign/obj/
-GUIDesign/.vs/
