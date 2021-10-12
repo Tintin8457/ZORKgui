@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ZorkGUIDesign
@@ -17,14 +19,10 @@ namespace ZorkGUIDesign
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
-            Close();
+            Game roomRoom = new Game();
+            roomRoom.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -37,11 +35,6 @@ namespace ZorkGUIDesign
             Close();
         }
 
-        private void oPENToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void createNewGameFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -49,17 +42,31 @@ namespace ZorkGUIDesign
 
         private void openExistingGameFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                /*try
+                {
+                    var openFile = openFileDialog.FileName;
+
+                    using (Stream stream = openFileDialog.OpenFile())
+                    {
+                        Process.Start("notepad.exe", openFile);
+                    }
+                }*/
+
+                var openFile = openFileDialog.FileName;
+
+                using (Stream stream = openFileDialog.OpenFile())
+                {
+                    Process.Start("notepad.exe", openFile);
+                }
+
+            }
         }
 
         private void saveGameFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
